@@ -150,19 +150,6 @@ export function IntroPage() {
             </li>
           ))}
         </ul>
-        <div className="l-btnRow">
-          <button
-            type="button"
-            className="l-btn l-btnPrimary"
-            disabled={!playbackEnded}
-            onClick={() => void openScanner()}
-            title={
-              playbackEnded ? undefined : "Сначала досмотри видео до конца (ролик ниже)."
-            }
-          >
-            {content.primaryCta}
-          </button>
-        </div>
         {content.footnoteMd ? (
           <div className="l-footnote">
             <ReactMarkdown>{content.footnoteMd}</ReactMarkdown>
