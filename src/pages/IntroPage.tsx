@@ -28,7 +28,7 @@ function PlayIcon() {
 
 export function IntroPage() {
   const navigate = useNavigate();
-  const { completeIntro } = useQuest();
+  const { completeIntro, markIntroVideoSeen } = useQuest();
   const videoRef = useRef<HTMLVideoElement>(null);
   const cameraStreamRef = useRef<MediaStream | null>(null);
 
@@ -66,9 +66,10 @@ export function IntroPage() {
   }, []);
 
   const handleVideoEnded = useCallback(() => {
+    markIntroVideoSeen();
     setPlaybackEnded(true);
     setShowPlayOverlay(false);
-  }, []);
+  }, [markIntroVideoSeen]);
 
   const openScanner = useCallback(async () => {
     completeIntro();

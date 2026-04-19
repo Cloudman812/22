@@ -8,10 +8,12 @@ export type QuestState = {
   introDone: boolean;
   /** Максимальный номер шага, по которому нажали «Дальше» (0…QUEST_STEP_COUNT). */
   completedThrough: number;
+  /** Досмотрели видео на /intro — после этого показываем ProgressBar до конца сессии. */
+  introVideoSeen: boolean;
 };
 
 export function defaultState(): QuestState {
-  return { introDone: false, completedThrough: 0 };
+  return { introDone: false, completedThrough: 0, introVideoSeen: false };
 }
 
 export function loadQuestState(): QuestState {
@@ -25,6 +27,7 @@ export function loadQuestState(): QuestState {
         QUEST_STEP_COUNT,
         Math.max(0, Number(o.completedThrough) || 0),
       ),
+      introVideoSeen: Boolean(o.introVideoSeen),
     };
   } catch {
     return defaultState();

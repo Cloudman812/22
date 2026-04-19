@@ -7,14 +7,21 @@ import styles from "./AppShell.module.css";
 export function AppShell() {
   const { state } = useQuest();
 
+  const showProgressBar =
+    state.introVideoSeen ||
+    state.introDone ||
+    state.completedThrough > 0;
+
   return (
     <>
       <div className="l-noise" aria-hidden />
       <div className={`l-shell ${styles.inner}`}>
-        <ProgressBar
-          introDone={state.introDone}
-          completedThrough={state.completedThrough}
-        />
+        {showProgressBar ? (
+          <ProgressBar
+            introDone={state.introDone}
+            completedThrough={state.completedThrough}
+          />
+        ) : null}
         <Outlet />
         <p className="l-footerLink">
           <Link to="/lab/qr">Все ссылки для теста (как QR)</Link>

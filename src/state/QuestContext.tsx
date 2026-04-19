@@ -18,6 +18,7 @@ import {
 type QuestApi = {
   state: QuestState;
   completeIntro: () => void;
+  markIntroVideoSeen: () => void;
   completeStep: (stepNumber: number) => void;
   reset: () => void;
 };
@@ -30,6 +31,15 @@ export function QuestProvider({ children }: { children: ReactNode }) {
   const completeIntro = useCallback(() => {
     setState((s) => {
       const next = { ...s, introDone: true };
+      saveQuestState(next);
+      return next;
+    });
+  }, []);
+
+  const markIntroVideoSeen = useCallback(() => {
+    setState((s) => {
+      if (s.introVideoSeen) return s;
+      const next = { ...s, introVideoSeen: true };
       saveQuestState(next);
       return next;
     });
@@ -56,10 +66,11 @@ export function QuestProvider({ children }: { children: ReactNode }) {
     () => ({
       state,
       completeIntro,
+      markIntroVideoSeen,
       completeStep,
       reset,
     }),
-    [state, completeIntro, completeStep, reset],
+    [state, completeIntro, markIntroVideoSeen, completeStep, reset],
   );
 
   return (
