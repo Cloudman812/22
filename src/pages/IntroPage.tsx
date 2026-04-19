@@ -103,32 +103,54 @@ export function IntroPage() {
 
   return (
     <>
-      <div className={styles.hero}>
-        <video
-          ref={videoRef}
-          className={styles.video}
-          src={INTRO_HERO_VIDEO}
-          controls={showControls}
-          playsInline
-          preload="metadata"
-          aria-label="Видео к вводному экрану"
-          onPlay={handlePlay}
-          onPause={handlePause}
-          onEnded={handleVideoEnded}
-        />
-        {showPlayOverlayUi ? (
-          <div className={styles.playOverlay}>
-            <button
-              type="button"
-              className={`l-btn l-btnPrimary ${styles.playBtn}`}
-              onClick={handlePlayClick}
-              aria-label="Воспроизвести видео"
-            >
-              <PlayIcon />
-              Смотреть
-            </button>
+      <div className={styles.heroStage}>
+        <div className={styles.celebration} aria-hidden>
+          <span className={styles.spark} style={{ left: "8%", animationDelay: "0s" }} />
+          <span className={styles.spark} style={{ left: "22%", animationDelay: "1.1s" }} />
+          <span className={styles.spark} style={{ left: "38%", animationDelay: "2.3s" }} />
+          <span className={styles.spark} style={{ left: "55%", animationDelay: "0.6s" }} />
+          <span className={styles.spark} style={{ left: "72%", animationDelay: "1.8s" }} />
+          <span className={styles.spark} style={{ left: "88%", animationDelay: "3s" }} />
+          <span className={`${styles.lantern} ${styles.lanternA}`} />
+          <span className={`${styles.lantern} ${styles.lanternB}`} />
+          <span className={`${styles.lantern} ${styles.lanternC}`} />
+          <span className={`${styles.lantern} ${styles.lanternD}`} />
+          <span className={`${styles.balloon} ${styles.balloonA}`} />
+          <span className={`${styles.balloon} ${styles.balloonB}`} />
+          <span className={`${styles.balloon} ${styles.balloonC}`} />
+        </div>
+
+        <div className={styles.heroColumn}>
+          <div className={styles.hero}>
+            <div className={styles.videoSlot}>
+              <video
+                ref={videoRef}
+                className={styles.video}
+                src={INTRO_HERO_VIDEO}
+                controls={showControls}
+                playsInline
+                preload="metadata"
+                aria-label="Видео к вводному экрану"
+                onPlay={handlePlay}
+                onPause={handlePause}
+                onEnded={handleVideoEnded}
+              />
+              {showPlayOverlayUi ? (
+                <div className={styles.playOverlay}>
+                  <button
+                    type="button"
+                    className={`l-btn l-btnPrimary ${styles.playBtn}`}
+                    onClick={handlePlayClick}
+                    aria-label="Воспроизвести видео"
+                  >
+                    <PlayIcon />
+                    Смотреть
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
-        ) : null}
+        </div>
       </div>
 
       {playbackEnded ? (
