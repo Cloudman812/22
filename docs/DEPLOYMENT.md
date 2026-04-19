@@ -6,8 +6,11 @@
 
 Репозиторий: **`Cloudman812/22`** → сайт: **`https://cloudman812.github.io/22/`**
 
-1. В репозитории GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Пуш в ветку **`main`** запускает workflow **Deploy to GitHub Pages** (`.github/workflows/deploy-pages.yml`): сборка `npm run build`, публикация папки `dist`.
+1. В репозитории GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions** (не «Deploy from a branch»).
+2. Первый раз может понадобиться вкладка **Actions** → открыть последний запуск → при запросе **Approve** одобрить среду **`github-pages`** (деплой один раз разрешить вручную).
+3. Пуш в **`main`** или ручной запуск **Actions → Deploy to GitHub Pages → Run workflow** выполняют сборку и выкладку `dist`.
+
+Если по адресу `https://…github.io/22/` видишь GitHub‑страницу «There isn't a GitHub Pages site here» — деплой ещё ни разу не прошёл: проверь **Actions** (зелёный ли последний job), пункты выше и подожди 1–2 минуты после успеха.
 3. Через 1–2 минуты приложение доступно по URL выше. Для тестов на iPhone используй **именно этот https-адрес** (камера работает).
 
 Пути в приложении учитывают подпапку репозитория (`base: /22/` в Vite).
