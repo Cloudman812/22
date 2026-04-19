@@ -222,15 +222,6 @@ export function IntroPage() {
           >
             {content.primaryCta}
           </button>
-          {content.secondaryCta ? (
-            <button
-              type="button"
-              className="l-btn l-btnGhost"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              {content.secondaryCta}
-            </button>
-          ) : null}
         </div>
         {content.footnoteMd ? (
           <div className="l-footnote">
