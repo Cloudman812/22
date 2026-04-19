@@ -20,15 +20,24 @@ export function loadQuestState(): QuestState {
   try {
     const raw = localStorage.getItem(QUEST_STORAGE_KEY);
     if (!raw) return defaultState();
-    const o = JSON.parse(raw) as Partial<QuestState>;
-    return {
-      introDone: Boolean(o.introDone),
-      completedThrough: Math.min(
-        QUEST_STEP_COUNT,
-        Math.max(0, Number(o.completedThrough) || 0),
-      ),
-      introVideoSeen: Boolean(o.introVideoSeen),
-    };
+    const o = JSON.parse(raw) as Record<string, unknown>;
+    const completedThrough = Math.min(
+      QUEST_STEP_COUNT,
+      Math.max(0, Number(o.completedThrough) || 0),
+    );
+    const introDone = Boolean(o.introDone);
+    const hasIntroVideoSeenKey = Object.prototype.hasOwnProperty.call(o, "introVideoSeen");
+    const legacyProgress = introDone || completedThrough > 0;
+    let introVideoSeen = Boolean(o.introVideoSeen);
+    /* Старые сохранения без поля: если квест уже начат — считаем видео пройденным один раз */
+    if (!hasIntroVideoSeenKey && legacyProgress) {
+      introVideoSeen = true;
+    }
+    const next: QuestState = { introDone, completedThrough, introVideoSeen };
+    if (!hasIntroVideoSeenKey && legacyProgress) {
+      saveQuestState(next);
+    }
+    return next;
   } catch {
     return defaultState();
   }

@@ -7,10 +7,7 @@ import styles from "./AppShell.module.css";
 export function AppShell() {
   const { state } = useQuest();
 
-  const showProgressBar =
-    state.introVideoSeen ||
-    state.introDone ||
-    state.completedThrough > 0;
+  const showProgressBar = state.introVideoSeen;
 
   return (
     <>
