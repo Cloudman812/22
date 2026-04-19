@@ -1,0 +1,60 @@
+.hero {
+  position: relative;
+  margin-bottom: 1.1rem;
+  border-radius: 20px;
+  border: 1px solid var(--lum-glass-border);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--lum-shadow);
+  overflow: hidden;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.playBtn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: auto;
+  min-height: 2.85rem;
+  padding: 0.85rem 1.35rem;
+}
+
+.playIcon {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.postVideoCta {
+  margin: 0 auto 1.1rem;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+}
+
+.cameraError {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(139, 40, 60, 0.92);
+}

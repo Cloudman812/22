@@ -1,0 +1,42 @@
+.stub {
+  padding: 1.15rem 1.25rem;
+  border-color: rgba(91, 75, 219, 0.22);
+}
+
+.tag {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-family: var(--font-brand);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(91, 75, 219, 0.85);
+}
+
+.title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0 0 0.45rem;
+}
+
+.body {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--lum-muted);
+}
+
+.body p {
+  margin: 0 0 0.5rem;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+.hint {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(28, 29, 38, 0.45);
+  line-height: 1.45;
+}

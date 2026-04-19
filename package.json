@@ -1,0 +1,31 @@
+{
+  "name": "22qr",
+  "private": true,
+  "type": "module",
+  "description": "Квест 22 QR — 11 шагов после ввода",
+  "scripts": {
+    "dev": "vite",
+    "cert:dev": "scripts/gen-dev-cert.sh",
+    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "preview:lan": "vite preview --host 0.0.0.0 --port 4173",
+    "serve:lab": "serve design-lab -s -l tcp://0.0.0.0:8080"
+  },
+  "dependencies": {
+    "qr-scanner": "^1.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "serve": "^14.2.4",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.1"
+  }
+}

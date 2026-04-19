@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+
+# локальные сертификаты mkcert (генерация: scripts/gen-dev-cert.sh)
+certs/*.pem
+
+# тяжёлое видео вручную в public (см. docs/DEPLOYMENT.md)
+public/media/intro/*.mov
+public/media/intro/*.MOV
+future-content/*.mov
+future-content/*.MOV
