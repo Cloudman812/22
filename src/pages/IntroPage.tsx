@@ -10,7 +10,7 @@ import styles from "./IntroPage.module.css";
 
 const content = intro as IntroContent;
 
-/** Файл клади в `public/media/intro/hero.mov` (не в git из‑за размера — см. docs/DEPLOYMENT.md). */
+/** Фоновое видео: `public/media/intro/hero.mov` (в репозитории — сжатая копия под GitHub). */
 const INTRO_HERO_VIDEO = `${import.meta.env.BASE_URL}media/intro/hero.mov`;
 
 function PlayIcon() {

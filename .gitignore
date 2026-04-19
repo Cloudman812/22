@@ -2,11 +2,18 @@ node_modules/
 dist/
 .DS_Store
 
+# ffmpeg two-pass
+ffmpeg2pass*.log*
+x264_2pass.log
+
 # локальные сертификаты mkcert (генерация: scripts/gen-dev-cert.sh)
 certs/*.pem
 
-# тяжёлое видео вручную в public (см. docs/DEPLOYMENT.md)
-public/media/intro/*.mov
-public/media/intro/*.MOV
-future-content/*.mov
-future-content/*.MOV
+# Оригиналы с iPhone (100+ МБ); в git — сжатые копии под лимит GitHub
+future-content/IMG_1080.MOV
+future-content/IMG_1081.MOV
+
+# Локальные ролики в intro; hero.mov — сжатая версия для GitHub Pages
+public/media/intro/*
+!public/media/intro/.gitkeep
+!public/media/intro/hero.mov
