@@ -104,6 +104,72 @@ export function IntroPage() {
 
   return (
     <>
+      <article
+        className="l-glass"
+        style={{ padding: "1.55rem 1.45rem 1.5rem", marginBottom: "1.1rem" }}
+      >
+        <p className="l-eyebrow">{content.eyebrow}</p>
+        <h1 className="l-displayTitle">{content.title}</h1>
+        <div className="l-bodyMd">
+          <ReactMarkdown>{content.leadMd}</ReactMarkdown>
+        </div>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.25rem",
+          }}
+        >
+          {content.bullets.map((line) => (
+            <li
+              key={line}
+              style={{
+                position: "relative",
+                paddingLeft: "1.15rem",
+                fontSize: "0.86rem",
+                lineHeight: 1.5,
+                color: "rgba(28, 29, 38, 0.72)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              <span
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "0.48em",
+                  width: 5,
+                  height: 5,
+                  borderRadius: "50%",
+                  background:
+                    "linear-gradient(145deg, var(--lum-accent), #9b8cff)",
+                  boxShadow: "0 0 0 4px rgba(91, 75, 219, 0.12)",
+                }}
+              />
+              {line}
+            </li>
+          ))}
+        </ul>
+        <div className="l-btnRow">
+          <button
+            type="button"
+            className="l-btn l-btnPrimary"
+            disabled={!playbackEnded}
+            onClick={() => void openScanner()}
+            title={
+              playbackEnded ? undefined : "Сначала досмотри видео до конца (ролик ниже)."
+            }
+          >
+            {content.primaryCta}
+          </button>
+        </div>
+        {content.footnoteMd ? (
+          <div className="l-footnote">
+            <ReactMarkdown>{content.footnoteMd}</ReactMarkdown>
+          </div>
+        ) : null}
+      </article>
+
       <div className={styles.heroStage}>
         <div className={styles.celebration} aria-hidden>
           <span className={styles.spark} style={{ left: "8%", animationDelay: "0s" }} />
@@ -166,69 +232,6 @@ export function IntroPage() {
           ) : null}
         </div>
       ) : null}
-
-      <article className="l-glass" style={{ padding: "1.55rem 1.45rem 1.5rem" }}>
-        <p className="l-eyebrow">{content.eyebrow}</p>
-        <h1 className="l-displayTitle">{content.title}</h1>
-        <div className="l-bodyMd">
-          <ReactMarkdown>{content.leadMd}</ReactMarkdown>
-        </div>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "0 0 1.25rem",
-          }}
-        >
-          {content.bullets.map((line) => (
-            <li
-              key={line}
-              style={{
-                position: "relative",
-                paddingLeft: "1.15rem",
-                fontSize: "0.86rem",
-                lineHeight: 1.5,
-                color: "rgba(28, 29, 38, 0.72)",
-                marginBottom: "0.5rem",
-              }}
-            >
-              <span
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: "0.48em",
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  background:
-                    "linear-gradient(145deg, var(--lum-accent), #9b8cff)",
-                  boxShadow: "0 0 0 4px rgba(91, 75, 219, 0.12)",
-                }}
-              />
-              {line}
-            </li>
-          ))}
-        </ul>
-        <div className="l-btnRow">
-          <button
-            type="button"
-            className="l-btn l-btnPrimary"
-            disabled={!playbackEnded}
-            onClick={() => void openScanner()}
-            title={
-              playbackEnded ? undefined : "Сначала досмотри видео до конца — кнопка появится под роликом."
-            }
-          >
-            {content.primaryCta}
-          </button>
-        </div>
-        {content.footnoteMd ? (
-          <div className="l-footnote">
-            <ReactMarkdown>{content.footnoteMd}</ReactMarkdown>
-          </div>
-        ) : null}
-      </article>
 
       <QrScanModal
         open={scannerOpen}
